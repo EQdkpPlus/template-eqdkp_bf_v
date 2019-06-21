@@ -181,7 +181,7 @@
 				<div id="personalAreaTime" class="hiddenSmartphone">
 					<ul>
 						<li><!-- IF S_SEARCH -->
-						<a href="{EQDKP_CONTROLLER_PATH}Search{SEO_EXTENSION}{SID}" title="{L_search}"><i class="fa fa-lg fa-search"></i></a>
+						<a href="{EQDKP_CONTROLLER_PATH}Search{SEO_EXTENSION}{SID}" title="{L_search}"><i class="fa fa-lg fa-search"></i> {L_search}</a>
 						
 					<!-- ENDIF -->	</li>
 					</ul>
