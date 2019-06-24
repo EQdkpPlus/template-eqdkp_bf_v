@@ -212,14 +212,8 @@
 				<div class="portal_block1">{PORTAL_BLOCK1}</div>
 				<!-- LISTENER header_bottom -->
 			</div> <!-- close header-->
-		</header>
-
-
-		<section id="contentContainer">
-			<a id="content"></a>
-			<!-- LISTENER content_container_top -->
-			<header>
-				<nav id="nav">
+			
+			<nav id="nav">
 					<div id="mainmenu">
 						<!-- LISTENER mainmenu -->
 						<div class="hiddenSmartphone">
@@ -251,17 +245,25 @@
 						</div>
 						<!-- LISTENER mainmenu -->
 					</div><!-- close mainmenu -->
+				</nav>
+		</header>
 
-					<!-- IF S_IN_ADMIN -->
+
+		<section id="contentContainer">
+			<a id="content"></a>
+			<!-- LISTENER content_container_top -->
+			<!-- IF S_IN_ADMIN -->
+			<header>
+				<nav id="admin-nav">
 					<div id="adminmenu">
 						<div class="hiddenSmartphone">
 							{ADMIN_MENU}
 						</div>
 						<!-- LISTENER adminmenu -->
 					</div>
-					<!-- ENDIF -->
 				</nav>
 			</header>
+			<!-- ENDIF -->
 
 			<div class="portal">
 				<!-- LISTENER portal_top -->
@@ -532,6 +534,7 @@
 	{FOOTER_CODE}
 	<!-- LISTENER body_bottom -->
 	<a id="bottom"></a>
+	<div class="toTopContainer" style=""><div><a href="javascript:onclick=window.scrollTo(0,0)"><i class="fa-angle-up fa fa-lg"></i></a></div></div>
 	</body>
 </html>
 <!-- ENDIF -->

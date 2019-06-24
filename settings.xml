@@ -38,10 +38,10 @@
 	<table_tr_background_color2>rgba(0, 0, 0, 0.3)</table_tr_background_color2>
 	<table_tr_background_color_hover>rgb(0, 0, 0)</table_tr_background_color_hover>
 	<table_border_color>rgba(255, 255, 255, 0.4)</table_border_color>
-	<menu_background_color>rgba(69, 72, 77, 0.9)</menu_background_color>
+	<menu_background_color>rgb(18, 18, 18)</menu_background_color>
 	<menu_font_color>rgb(255, 255, 255)</menu_font_color>
-	<menu_item_background_color>rgba(255, 255, 255, 0)</menu_item_background_color>
-	<menu_item_background_color_hover>rgb(0, 0, 0)</menu_item_background_color_hover>
+	<menu_item_background_color>rgb(18, 18, 18)</menu_item_background_color>
+	<menu_item_background_color_hover>rgb(18, 18, 18)</menu_item_background_color_hover>
 	<menu_item_font_color_hover>rgb(248, 134, 19)</menu_item_font_color_hover>
 	<sidebar_background_color>rgba(255, 255, 255, 0.5)</sidebar_background_color>
 	<sidebar_font_color>rgb(0, 0, 0)</sidebar_font_color>

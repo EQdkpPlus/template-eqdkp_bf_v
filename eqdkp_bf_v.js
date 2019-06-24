@@ -1,4 +1,67 @@
-$(function(){
+$(function() {
+	//Fixed Menu
+	$(window).on('scroll', function() {
+		var topMenu = $('#nav');
+		var topBody = $('body');
+		
+		console.log($("#header").outerHeight() + $("#personalArea").outerHeight());
+		
+		if($(document).scrollTop() > ($("#header").outerHeight() + $("#personalArea").outerHeight())){
+			if(!topMenu.hasClass("jsFixed")){
+				topMenu.addClass('jsFixed');
+				topBody.addClass('jsFixedBody');
+			}
+		} else {
+			topMenu.removeClass('jsFixed');
+			topBody.removeClass('jsFixedBody');
+		}
+		
+		//ScrollToTop
+		var heightWindow = $(window).height();
+		var heightDocument = $(document).height();
+		
+		if($(document).scrollTop() > (heightWindow-(heightWindow/2))){
+			$('.toTopContainer').show();
+		} else {
+			$('.toTopContainer').hide();
+		}
+		
+		
+		
+	});
+	
+	//Mobile Swipe
+	if($( window ).width() < 900) {
+		var open = 'none';
+	    //Enable swiping...
+	    $("body").swipe( {
+	      //Single swipe handler for left swipes
+	      swipeRight:function(event, direction, distance, duration, fingerCount) {
+	    	  if(open == 'none'){
+	    		  $('.nav-mobile .mobile-overlay').show();
+	    		  open = 'menu';
+	    	  }else if(open == 'user'){
+	    		  $('.nav-mobile .mobile-overlay-user').hide();
+	    		  open = "none";
+	    	  }
+	      },
+	      swipeLeft:function(event, direction, distance, duration, fingerCount) {
+	    	  if(open == 'none'){
+	    		  $('.nav-mobile .mobile-overlay-user').show();
+	    		  open = "user";
+	    	  }else if(open == 'menu'){
+	    		  $('.nav-mobile .mobile-overlay').hide();
+	    		  open = "none";
+	    	  }
+	      },
+	      excludedElements: "label, button, input, select, textarea, table", // Here your list of excluded elements ...
+		  threshold:130
+	    });
+	}
+});
+
+
+$(function() {
 	if(mmocms_header_type == 'full'){
 		/* My Chars Points */
 		$('.mychars-points-tooltip .char').on('click', function(){
@@ -26,11 +89,12 @@ $(function(){
 
 		/* Main Menu */
 		$('ul.mainmenu li.link_li_indexphp a.link_indexphp, ul.mainmenu li.link_li_entry_home a.link_entry_home').html('');
-
+		
 		/* Mobile Menu */
 		var mobile_menu_wrapper		= $('.mainmenu-mobile-wrapper, .adminmenu-mobile-wrapper'),
 			mobile_menu_position	= [];
-		mobile_menu_wrapper.find('a.sub-menu-arrow').on('click', function(){
+
+		mobile_menu_wrapper.find('a.sub-menu-arrow, .sub-menu-trigger').on('click', function(){
 			var depth		= $(this).parentsUntil(mobile_menu_wrapper).parents('.sub-menu').length,
 				is_admin	= $(this).parentsUntil(mobile_menu_wrapper).last().hasClass('adminmenu-mobile');
 			
@@ -48,6 +112,27 @@ $(function(){
 				mobile_menu_wrapper.css('transform','translate3d('+( -100 * (depth + 1))+'% ,0,0)');
 				if(is_admin && depth == 0) $('.mainmenu-mobile-wrapper').addClass('hidden');
 				$('.nav-mobile .mobile-overlay').scrollTop(0);
+			}
+		});
+		
+		
+		var mobile_usermenu_wrapper	= $('.usermenu-mobile-wrapper');
+		var mobile_usermenu_position	= [];
+		mobile_usermenu_wrapper.find('a.sub-menu-arrow').after('<span class="sub-menu-trigger hand"><i class="fa fa-chevron-right"></i></span>');
+		mobile_usermenu_wrapper.find('a.sub-menu-arrow, .sub-menu-trigger').on('click', function(){
+			var depth		= $(this).parentsUntil(mobile_usermenu_wrapper).parents('.sub-menu').length;
+			if( $(this).parent().hasClass('open') ){
+				mobile_usermenu_wrapper.css('transform','translate3d('+( -100 * depth)+'% ,0,0)');
+				$(this).parent().removeClass('open');
+				mobile_usermenu_wrapper.removeClass('open');
+				$('.nav-mobile .mobile-overlay-user').scrollTop( mobile_usermenu_position.pop() );
+				
+			}else{
+				mobile_usermenu_position.push( $(' .nav-mobile .mobile-overlay-user').scrollTop() );
+				$(this).parent().addClass('open');
+				mobile_usermenu_wrapper.addClass('open');
+				mobile_usermenu_wrapper.css('transform','translate3d('+( -100 * (depth + 1))+'% ,0,0)');
+				$('.nav-mobile .mobile-overlay-user').scrollTop(0);
 			}
 		});
 
@@ -127,7 +212,7 @@ $(function(){
 			}
 		});
 		//Periodic Update of Notifications
-		window.setTimeout("notification_update()", 300000);
+		window.setTimeout(notification_update, 1000*60*5);
 	}
 })
 
@@ -180,28 +265,13 @@ function notification_update(){
 	});
 
 	//5 Minute
-	window.setTimeout("notification_update()", 300000);
+	window.setTimeout("notification_update()", 1000*60*5);
 }
 
-$(function() {      
-
-	if($( window ).width() < 900) {
-	    //Enable swiping...
-	    $("body").swipe( {
-	      //Single swipe handler for left swipes
-	      swipeRight:function(event, direction, distance, duration, fingerCount) {
-	    	  $('.nav-mobile .mobile-overlay').show();
-	      },
-	      excludedElements: "label, button, input, select, textarea", // Here your list of excluded elements ...
-		  threshold:130
-	    });
-	    
-	    $(".nav-mobile .mobile-overlay").swipe( {
-		//Single swipe handler for left swipes
-		swipeLeft:function(event, direction, distance, duration, fingerCount) {
-	      	  $('.nav-mobile .mobile-overlay').hide();
-		},
-		//Default is 75px, set to 0 for demo so any distance triggers swipe
-	      });
+function test_localstorage(){
+	try {
+		return ('localStorage' in window) && window[localstorage] !== null;
+	} catch(e) {
+		return false;
 	}
-});
+}

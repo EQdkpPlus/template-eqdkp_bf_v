@@ -559,6 +559,14 @@ h3 {
 }
 
 /* mainmenu */
+#nav {
+background-color: @eqdkpMenuBackgroundColor;
+}
+#mainmenu {
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
 ul.mainmenu {
 	width: 100%;
 	padding-bottom: .3em;
@@ -568,12 +576,13 @@ ul.mainmenu {
 ul.mainmenu li {
 	position: relative;
 	transition: background .2s ease-out;
+	background: @eqdkpMenuItemBackgroundColor;
 }
 ul.mainmenu li:hover {
 	background: @eqdkpMenuItemBackgroundColorHover;
 	transition: none;
 }
-ul.mainmenu li:hover a {
+ul.mainmenu li:hover > a {
 	color: @eqdkpMenuItemFontColorHover;
 }
 ul.mainmenu > li {
@@ -660,7 +669,7 @@ ul.adminmenu li:hover {
 	background: @eqdkpMenuItemBackgroundColorHover;
 	transition: none;
 }
-ul.adminmenu li:hover a {
+ul.adminmenu li:hover > a {
 	color: @eqdkpMenuItemFontColorHover;
 }
 ul.adminmenu > li {
@@ -677,6 +686,7 @@ ul.adminmenu > li li {
 	background: darken(@eqdkpMenuBackgroundColor, 10);
 	border-top: 1px solid #000;
 	font-size: 0.8em;
+	color: @eqdkpMenuFontColor;
 }
 
 ul.adminmenu > li li li {
@@ -3638,6 +3648,10 @@ button#cboxPrevious, button#cboxNext, button#cboxClose, button#cboxSlideshow {
 		float: none;
 		width: 100% !important;
 	}
+	
+	.responsive #mainmenu {
+		margin-left: 10px;
+	}
 
 	/* Mobile Navigation */
 	.nav-mobile {
@@ -4413,4 +4427,43 @@ body.module-iframe {
 
 .fa-inverse {
     color: #000;
+}
+
+.toTopContainer {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	height: 30px;
+	width: 30px;
+	background: @eqdkpButtonBackgroundColor;
+	color: @eqdkpButtonFontColor !important;
+	font-size: 25px;
+	padding: 5px;
+	line-height: 20px;
+	display: none;
+}
+
+.toTopContainer a, .toTopContainer a:hover {
+	display: block;
+	color: #fff;
+}
+
+.simple-header .toTopContainer {
+	display: none !important;
+}
+
+#nav.jsFixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.admin.jsFixedBody .portal{
+	margin-top: 85px;
+}
+
+.jsFixedBody .portal {
+	margin-top: 47px;
 }
