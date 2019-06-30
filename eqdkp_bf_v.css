@@ -151,7 +151,7 @@ h3 {
 	font-size: 13px;
 	padding-left: 100px;
 	padding-right: 100px;
-	padding-bottom: 10px;
+	padding-bottom: 2px;
 	text-align:left;
 }
 
@@ -569,7 +569,6 @@ background-color: @eqdkpMenuBackgroundColor;
 
 ul.mainmenu {
 	width: 100%;
-	padding-bottom: .3em;
 	font-size: 1.4em;
 	font-family: Purista;
 }
@@ -648,10 +647,6 @@ ul.mainmenu ul.sub-menu .sub-menu-arrow:after {
 }
 ul.mainmenu ul.sub-menu li:hover > .sub-menu-arrow:after {
 	border-left-color: #FFF;
-}
-
-body:not(.admin) ul.mainmenu {
-	margin-bottom: .3em;
 }
 
 /* adminmenu */
@@ -3653,9 +3648,12 @@ button#cboxPrevious, button#cboxNext, button#cboxClose, button#cboxSlideshow {
 		margin-left: 10px;
 	}
 
+	.responsive #nav {
+		background: rgba(0, 0, 0, 0.9);
+	}
+
 	/* Mobile Navigation */
 	.nav-mobile {
-		background: rgba(0, 0, 0, 0.5);
 		width: 100%;
 		min-height: 3em;
 	}
